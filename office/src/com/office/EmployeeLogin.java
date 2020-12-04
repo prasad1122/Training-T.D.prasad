@@ -27,7 +27,7 @@ public class EmployeeLogin extends HttpServlet {
 		}
 		String url="jdbc:mysql://localhost:3306/office";
 		String username="root";
-		String password="root";
+		String password="Prasad@1122";
 		try {
 			con=DriverManager.getConnection(url, username, password);
 		} catch (SQLException e) {
