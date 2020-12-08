@@ -1,0 +1,58 @@
+<web-app>
+<servlet>
+<servlet-name>second</servlet-name>
+<servlet-class>com.mvc.LoginController</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>second</servlet-name>
+<url-pattern>/doctor_login</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>third</servlet-name>
+<servlet-class>com.mvc.LoginController2</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>third</servlet-name>
+<url-pattern>/patient_login</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>four</servlet-name>
+<servlet-class>com.mvc.patientRegController</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>four</servlet-name>
+<url-pattern>/patient_register</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>five</servlet-name>
+<servlet-class>com.mvc.doctorRegController2</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>five</servlet-name>
+<url-pattern>/doctor_register</url-pattern>
+</servlet-mapping>
+ <servlet>
+    <servlet-name>six</servlet-name>
+    <servlet-class>com.mvc.patientupdatecontroller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>six</servlet-name>
+    <url-pattern>/patient_profile_update</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>seven</servlet-name>
+    <servlet-class>com.mvc.doctorupdatecontroller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>seven</servlet-name>
+    <url-pattern>/doctor_profile_update</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>appointment</servlet-name>
+    <servlet-class>com.mvc.AppointmentController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>appointment</servlet-name>
+    <url-pattern>/Apply_Appointment</url-pattern>
+  </servlet-mapping>
+</web-app>
