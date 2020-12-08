@@ -27,7 +27,7 @@ public class LoginBean
 public boolean loginValidate(String email,String password) throws ClassNotFoundException, SQLException {
 	Connection con=ConnectionEx.Connectivity();
 	PreparedStatement ps=con.prepareStatement("select * from doctor where email=? and password=?");
-	ps.setString(1, email5);
+	ps.setString(1, email);
 	ps.setString(2, password);
 	ResultSet rs=ps.executeQuery();
 	if(rs.next())
