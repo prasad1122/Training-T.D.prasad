@@ -48,28 +48,5 @@
 	<servlet-name>sixth</servlet-name>
 	<url-pattern>/employee_update</url-pattern>
 	</servlet-mapping>
-	<servlet>
-	<servlet-name>seventh</servlet-name>
-	<servlet-class>com.office.Leave</servlet-class>
-	</servlet>
-	<servlet-mapping>
-	<servlet-name>seventh</servlet-name>
-	<url-pattern>/apply_leave</url-pattern>
-	</servlet-mapping>
-	<servlet>
-	<servlet-name>eighth</servlet-name>
-	<servlet-class>com.office.AcceptLeave</servlet-class>
-	</servlet>
-	<servlet-mapping>
-	<servlet-name>eighth</servlet-name>
-	<url-pattern>/accept_leave</url-pattern>
-	</servlet-mapping>
-	<servlet>
-	<servlet-name>ninth</servlet-name>
-	<servlet-class>com.office.RejectLeave</servlet-class>
-	</servlet>
-	<servlet-mapping>
-	<servlet-name>ninth</servlet-name>
-	<url-pattern>/reject_leave</url-pattern>
-	</servlet-mapping>
+	
 </web-app>
