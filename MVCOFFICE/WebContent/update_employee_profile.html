@@ -1,0 +1,35 @@
+
+	
+<!DOCTYPE html>
+<html>
+<body bgcolor="#E6E6FA">
+	<br>
+	<br>
+	<center>
+		<h1>Welcome to Employee Profile Update Page</h1>
+		<a href="./employee_home.html">Home</a> | 
+		<ahref="./employee_profile.jsp">Profile</a> | <a href="./index.html">logout</a>
+	</center>
+	
+	
+<form action="./employee_update" method="post" align="center">
+<input type="hidden" name="id">
+<input type="text" name="ename" placeholder="Enter name">
+<input type="password" name="password" placeholder="Enter password">
+<input type="number" name="phone" placeholder="Enter Phone number">
+<input type="radio" name="gender" value="Male">Male
+<input type="radio" name="gender" value="Female">Female
+<select name="designation">
+<option value="Developer">Developer</option>
+<option value="Tester">Tester</option>
+</select>
+<input type="number" name="experience" placeholder="Enter experience">
+<input type="number" name="no_of_leaves_taken" placeholder="Enter no_of_leaves_taken">
+<input type="text" name="address" placeholder="Enter address">
+<input type="submit" value="update">
+</form>
+
+	
+
+</body>
+</html>
