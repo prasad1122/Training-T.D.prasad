@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app>
-	<servlet>
+ <servlet>
 		<servlet-name>first</servlet-name>
 		<servlet-class>com.office.Employeeregister</servlet-class>
 	</servlet>
@@ -48,5 +48,12 @@
 	<servlet-name>sixth</servlet-name>
 	<url-pattern>/employee_update</url-pattern>
 	</servlet-mapping>
-	
+	<servlet>
+		<servlet-name>seven</servlet-name>
+		<servlet-class>com.office.LeaveController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>seven</servlet-name>
+		<url-pattern>/apply_leave</url-pattern>
+	</servlet-mapping>
 </web-app>

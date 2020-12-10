@@ -3,6 +3,7 @@ package com.office;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class EmployeeLogin extends HttpServlet {
-	public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException
+	public void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException
 	{
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
@@ -19,22 +20,22 @@ public class EmployeeLogin extends HttpServlet {
 	lb.setEmail(email);
 	lb.setPassword(password);
 	HttpSession hs=request.getSession();
-	hs.setAttribute("bean", lb);
-		boolean status=false;
+	Employeeregisterbean er=null;
 		try {
-			status =lb.loginValidate(email, password);
+			er =lb.loginValidate(email, password);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
-		if(status)
+		if(er!=null)
 		{
-			hs.setAttribute("email",email);
-			response.sendRedirect("./employee_home.html");
+			hs.setAttribute("employeedetails", er);
+			hs.setAttribute("id", er.getEid());
+			response.sendRedirect("./employee_home.html?msg=loginsucessfull");
 		}
 		else
 		{
-			response.sendRedirect("./employee_login.html");
+			response.sendRedirect("./employee_login.html?msg=loginfailed");
 		}
 		
 	}
