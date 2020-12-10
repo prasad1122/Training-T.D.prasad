@@ -2,6 +2,7 @@ package com.office;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSession;
@@ -79,7 +80,7 @@ public class Employeeregisterbean {
 	}
 
 	public boolean register(String ename, String password, String email, long phone, String gender,String address,
-			String designation, int experience, int no_of_leaves_taken) throws Exception {
+			String designation, int experience, int no_of_leaves_taken) throws ClassNotFoundException, SQLException {
 		Connection con=ConnectionEx.Connectivity();		
 		String sql="insert into employee(ename,password,email,phone,gender,address,designation,experience,no_of_leaves_taken) values(?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps=con.prepareStatement(sql);

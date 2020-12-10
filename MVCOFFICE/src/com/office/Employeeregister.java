@@ -26,10 +26,20 @@ public class Employeeregister extends HttpServlet {
 		String designation=request.getParameter("designation");
 		int experience=Integer.parseInt(request.getParameter("experience"));
 		int no_of_leaves_taken=Integer.parseInt(request.getParameter("no_of_leaves_taken"));
-		Employeeregisterbean doc=new Employeeregisterbean();
 		boolean status=false;
+		Employeeregisterbean er=new Employeeregisterbean();
+		er.setEname(ename);
+		er.setPassword(password);
+		er.setEmail(email);
+		er.setPhone(phone);
+		er.setGender(gender);
+		er.setAddress(address);
+		er.setDesignation(designation);
+		er.setExperience(experience);
+		er.setNo_of_leaves_taken(no_of_leaves_taken);
+		
 		try {
-			status=doc.register(ename, password, email, phone, gender,address, designation,experience,no_of_leaves_taken);
+			status=er.register(ename, password, email, phone, gender,address, designation,experience,no_of_leaves_taken);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

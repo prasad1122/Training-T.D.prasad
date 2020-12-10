@@ -1,22 +1,21 @@
 package com.office;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class EmployeeUpdate extends HttpServlet {
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class EmployeeUpdate extends HttpServlet{
+	
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException 
+	{
+		int eid=Integer.parseInt(request.getParameter("emp_id"));				
 		String ename=request.getParameter("ename");
+		String password=request.getParameter("password");
+		String email=request.getParameter("email");
 		String number=request.getParameter("phone");
 		long phone=Long.parseLong(number);
 		String gender=request.getParameter("gender");
@@ -24,20 +23,32 @@ public class EmployeeUpdate extends HttpServlet {
 		String designation=request.getParameter("designation");
 		int experience=Integer.parseInt(request.getParameter("experience"));
 		int no_of_leaves_taken=Integer.parseInt(request.getParameter("no_of_leaves_taken"));
-		boolean status=false;
+		
+		EmployeeUpdateBean eu=new EmployeeUpdateBean();
+		eu.setEname(ename);
+		eu.setPassword(password);
+		eu.setEmail(email);
+		eu.setPhone(phone);
+		eu.setGender(gender);
+		eu.setAddress(address);
+		eu.setDesignation(designation);
+		eu.setExperience(experience);
+		eu.setNo_of_leaves_taken(no_of_leaves_taken);
+		HttpSession hs=request.getSession();
+		Employeeregisterbean er=null;
+		
 		try {
-			status=new EmployeeUpdateBean().update( ename, phone, gender, designation, experience, no_of_leaves_taken, address);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			er=eu.update(ename, password, email, phone, gender, address, designation, no_of_leaves_taken, eid);
+					} catch (ClassNotFoundException | SQLException e) {
+			
 			e.printStackTrace();
 		}
-		HttpSession hs=request.getSession();
-		if(status) {
-			
-			response.sendRedirect("./employee_profile.jsp?msg=updated sucessfully");
+		if(er!=null)
+		{
+			hs.setAttribute("EmployeeDetails", er);
+			response.sendRedirect("./employee_profile.jsp?msg=Profile updated");
 		}
 		else
-			response.sendRedirect("./update_employee_profile.html?msg=update failed");
+			response.sendRedirect("./update_employee_profile.jsp?msg=update failed");		
 	}
-
 }

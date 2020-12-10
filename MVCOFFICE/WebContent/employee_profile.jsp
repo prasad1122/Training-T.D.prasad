@@ -9,11 +9,11 @@
 		<h1>Welcome to Employee Profile Page</h1>
 		<a href="./employee_home.html">Home</a> | <a
 			href="./employee_profile.jsp">Profile</a> | <a href="./index.html">logout</a>
-			<a href="update_employee_profile.html">update</a>
+			<a href="update_employee_profile.jsp">update</a>
 	</center>
 	<br>
 	<br>
-	<%@page import="com.office.Employeeloginbean" %>
+	<%@page import="com.office.Employeeregisterbean" %>
 	<table border="2px;" align="center" width="500" hight="300">
 		<tr>
 			
@@ -21,11 +21,12 @@
 
 		</tr>
 	<%
-		Employeeloginbean lb =(Employeeloginbean)session.getAttribute("bean");
+	Employeeregisterbean er=(Employeeregisterbean)session.getAttribute("employeedetails");
 	%>
 	<tr>
-	<td><%=lb.getEmail()%></td>
+	<td><%=er.getEmail()%></td>
 	
+	<a href="update_employee_profile.jsp?id=<%=er.getEid()%>"><center>Update Profile</center></a>
 </tr>
 	
 	</table>
