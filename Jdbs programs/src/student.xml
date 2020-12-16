@@ -1,0 +1,17 @@
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.jdbc.Student1" table="student26">
+<id name="id" column="sid"></id>
+<property name="name" column="sname"></property>
+<property name="department" column="sdepartment"></property>
+<property name="section" column="ssection"></property>
+<property name="mobilenumber" column="smobile"></property>
+<property name="email" column="semail"></property>
+<property name="address" column="saddress"></property>
+<property name="college" column="scollege"></property>
+
+</class>
+</hibernate-mapping>
