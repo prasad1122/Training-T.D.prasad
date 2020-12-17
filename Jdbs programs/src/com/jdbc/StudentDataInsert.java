@@ -34,7 +34,7 @@ public class StudentDataInsert {
 			    e.setCollege( sc.next());
 			    Object s=se.save(e);
 			tx.commit();
-			if(s.hashCode()>0) {
+			if(s!=null) {
 				System.out.println("Record inserted");
 			}
 			System.out.println("Do you want to continue (y/n): ");
