@@ -32,7 +32,7 @@ public class StudentDataInsert {
 			    e.setAddress(sc.next());
 			    System.out.println("enter student college :");
 			    e.setCollege( sc.next());
-			    Serializable s=se.save(e);
+			    Object s=se.save(e);
 			tx.commit();
 			if(s.hashCode()>0) {
 				System.out.println("Record inserted");

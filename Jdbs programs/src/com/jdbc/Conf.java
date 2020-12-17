@@ -6,11 +6,13 @@ import org.hibernate.cfg.Configuration;
 
 public class Conf {
 	
-		public static Session config() {
+		public static Session config() 
+		{
 			Configuration cf=new Configuration();
 			cf.configure("configuration.xml");
 			SessionFactory sf=cf.buildSessionFactory();
 			Session se=sf.openSession();
 			return se;
+			
 	}
 }
