@@ -1,16 +1,21 @@
 package com.jdbc;
 
-import java.io.Serializable;
+
 import java.util.Scanner;
 
 import org.hibernate.query.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 public class StudentDataInsert {
 	
 	public static void insert() throws Exception {
-		Session se=Conf.config();
+		Configuration cf=new Configuration();
+		cf.configure("configuration.xml");
+		SessionFactory sf=cf.buildSessionFactory();
+		Session se=sf.openSession();
 		Scanner sc=new Scanner(System.in);
 		String choice="";
 		do {

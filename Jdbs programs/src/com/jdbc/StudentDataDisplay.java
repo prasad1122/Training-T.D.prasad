@@ -8,12 +8,17 @@ import java.util.List;
 import java.util.Scanner;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 public class StudentDataDisplay {
 	public static void display() throws Exception {
-		Session se=Conf.config();
+		Configuration cf=new Configuration();
+		cf.configure("configuration.xml");
+		SessionFactory sf=cf.buildSessionFactory();
+		Session se=sf.openSession();
 		Transaction tx=se.beginTransaction();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter your choice \n 1.Retrieve All details\n 2. Retrieve sinlge row");

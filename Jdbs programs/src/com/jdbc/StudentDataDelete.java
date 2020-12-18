@@ -6,12 +6,17 @@ import java.sql.ResultSet;
 import java.util.Scanner;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 public class StudentDataDelete {
 	public static void delete() throws Exception {
-		Session se=Conf.config();
+		Configuration cf=new Configuration();
+		cf.configure("configuration.xml");
+		SessionFactory sf=cf.buildSessionFactory();
+		Session se=sf.openSession();
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter your choice \n 1.Delete All details\n 2. Delete sinlge row");
 		int choice = sc.nextInt();

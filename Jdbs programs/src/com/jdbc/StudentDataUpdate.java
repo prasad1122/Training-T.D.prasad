@@ -5,12 +5,17 @@ import java.sql.PreparedStatement;
 import java.util.Scanner;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 public class StudentDataUpdate {
 	public static void update() throws Exception {
-		Session se=Conf.config();
+		Configuration cf=new Configuration();
+		cf.configure("configuration.xml");
+		SessionFactory sf=cf.buildSessionFactory();
+		Session se=sf.openSession();
 		Scanner sc = new Scanner(System.in);
 		int choice = 0,a = 0;
 		String option = "";
