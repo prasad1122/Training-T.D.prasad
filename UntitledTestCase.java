@@ -1,0 +1,229 @@
+package com.selenium;
+
+import java.util.regex.Pattern;
+
+import javax.imageio.ImageIO;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import org.testng.Assert;
+import org.testng.annotations.*;
+
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+import static org.testng.Assert.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.awt.Robot;
+import org.apache.commons.io.FileUtils;
+import java.awt.event.KeyEvent;
+
+public class UntitledTestCase {
+  private boolean acceptNextAlert = true;
+  private StringBuffer verificationErrors = new StringBuffer();
+  private JavascriptExecutor js;
+  public RemoteWebDriver driver = null;
+ @BeforeTest
+  public void setUp() throws Exception {
+	 WebDriverManager.chromedriver().setup();
+	 driver = new ChromeDriver();
+	 driver.manage().window().maximize();
+	 
+	}
+  @Test(enabled=true)
+  public void testUntitledTestCase() throws Exception {
+	  try {
+	       driver.get("https://www.lambdatest.com/automation-demos/");
+	       driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+	       driver.findElement(By.xpath("//span[@class='cookie__bar__close hover:underline smtablet:hidden']")).click();
+			 Thread.sleep(500);
+			 driver.findElement(By.id("username")).sendKeys("lambda");
+			  Thread.sleep(500);
+			 driver.findElement(By.id("password")).sendKeys("lambda123");
+			 Thread.sleep(500);
+			 driver.findElement(By.id("newapply")).submit();
+			 Thread.sleep(500);
+            driver.findElement(By.id("developer-name")).sendKeys("prasaddurga402@gmail.com");
+              Thread.sleep(500);
+			  driver.findElement(By.id("populate")).click(); Thread.sleep(150);
+			  assertEquals(closeAlertAndGetItsText(), "prasaddurga402@gmail.com");
+			  Thread.sleep(500);
+			  driver.findElement(By.id("month")).click();
+			  Thread.sleep(500);
+			  
+			  driver.findElement(By.id("discounts")).click(); 
+			  Thread.sleep(500);
+			  driver.findElement(By.id("preferred-payment")).click(); 
+			  Thread.sleep(500);
+			  new Select(driver.findElement(By.id("preferred-payment"))).selectByVisibleText("Wallets");
+			  Thread.sleep(500);
+			  driver.findElement(By.id("tried-ecom")).click();
+			  Thread.sleep(5000);
+			  driver.findElement(By.xpath("//div[@id='__next']/div/section[2]/div/div/div[4]/div[2]/div/div/div/div")).click(); 
+			  Thread.sleep(1000);
+			  driver.findElement(By.id("comments")).sendKeys("Feedback");
+				
+			  //String oldTab = driver.getWindowHandle();
+			  ((JavascriptExecutor) driver).executeScript("window.open()");
+			  ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+			  driver.switchTo().window(tabs.get(1));
+			    driver.get("https://www.lambdatest.com/selenium-automation/");
+			    driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+			    driver.findElement(By.xpath("//span[@class='cookie__bar__close hover:underline smtablet:hidden']")).click();
+			    Thread.sleep(3000);
+			    WebElement Image =driver.findElement(By.xpath("//img[@title='Jenkins']"));
+			    waitForVisible(driver,Image);
+			  //Rihgt click on Image using contextClick() method.
+			    
+			  Actions action= new Actions(driver);
+			  action.contextClick(Image);	
+			  action.build().perform();
+			  Robot robot = new Robot();
+			  int REPEATS_OF_VK_DOWN_INPUT = 8;
+			  for (int i = 0; i < REPEATS_OF_VK_DOWN_INPUT; i++) {
+			      robot.keyPress(KeyEvent.VK_DOWN);
+			      robot.keyRelease(KeyEvent.VK_DOWN);
+			      Thread.sleep(500);
+			  }
+			  robot.keyPress(KeyEvent.VK_ENTER);
+			  robot.keyRelease(KeyEvent.VK_ENTER);
+			  Thread.sleep(6000);
+				  driver.switchTo().window(tabs.get(0)); 
+				  driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+			  JavascriptExecutor js = (JavascriptExecutor)driver; //Scrolling using JavascriptExecutor
+			   js.executeScript("window.scrollBy(0,150)");//Scroll Down to file upload button (+ve)
+			   Thread.sleep(3000);
+			 
+			   WebElement element=driver.findElement(By.xpath("//input[@id='file']"));
+			   String jse = "arguments[0].style.visibility = 'visible';";
+			   Thread.sleep(1000);
+			    js.executeScript(jse, element);
+			    Thread.sleep(1000);
+			    File classpathRoot = new File(System.getProperty("user.dir"));
+			    File picturesDir = new File(classpathRoot, "/pictures");
+			    File picture = new File(picturesDir, "jenkins.svg");
+			    String picturePath = picture.getAbsolutePath();
+			    element.sendKeys(picturePath);
+			    Thread.sleep(1000);
+			    String jsa = "arguments[0].style.visibility = 'hidden';";
+			    Thread.sleep(1000);
+			    js.executeScript(jsa, element);
+			    Thread.sleep(1000);
+
+				Assert.assertTrue(isFileDownloaded("jenkins.svg"),"File is not downloaded");
+		
+		 Thread.sleep(1000);
+			   //driver.findElement(By.xpath("//input[@id='file']")).click();
+		 assertEquals(closeAlertAndGetItsText(), "your image upload sucessfully!!");
+
+				
+	          
+						driver.findElement(By.xpath("(//button[normalize-space()='Submit'])[1]")).click();
+						js.executeScript("window.scrollBy(0,-150)");
+						String checkText = driver.findElement(By.xpath("//p[normalize-space()='You have successfully submitted the form.']")).getText();
+						Assert.assertEquals("You have successfully submitted the form.", checkText);
+				   
+		driver.close();
+	  } catch (Exception e) {
+		    System.out.println(e.getMessage());
+		  }
+		}     
+          	  
+  
+
+  @AfterClass(alwaysRun = true)
+  public void tearDown() throws Exception {
+    driver.quit();
+    String verificationErrorString = verificationErrors.toString();
+    if (!"".equals(verificationErrorString)) {
+      fail(verificationErrorString);
+    }
+  }
+
+  private boolean isElementPresent(By by) {
+    try {
+      driver.findElement(by);
+      return true;
+    } catch (NoSuchElementException e) {
+      return false;
+    }
+  }
+
+  private boolean isAlertPresent() {
+    try {
+      driver.switchTo().alert();
+      return true;
+    } catch (NoAlertPresentException e) {
+      return false;
+    }
+  }
+
+  private String closeAlertAndGetItsText() {
+    try {
+      Alert alert = driver.switchTo().alert();
+      String alertText = alert.getText();
+      if (acceptNextAlert) {
+        alert.accept();
+      } else {
+        alert.dismiss();
+      }
+      return alertText;
+    } finally {
+      acceptNextAlert = true;
+    }
+  }
+ 
+  public void waitForVisible(WebDriver driver, WebElement element) {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			wait.until(ExpectedConditions.visibilityOf(element));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+  
+  public boolean isFileDownloaded(String fileName) throws IOException {
+
+		if (Files.notExists(Paths.get("DownloadFiles"))) {
+			Files.createDirectory(Paths.get("DownloadFiles"));
+		}
+
+		File dir = new File(System.getProperty("C:\\Users\\Durgaprasad\\Downloads"));
+		File[] dirContents = dir.listFiles();
+
+		for (int i = 0; i < dirContents.length; i++) {
+			if (dirContents[i].getName().equals(fileName)) {
+				// File has been found, it can now be deleted:
+				dirContents[i].delete();
+				return true;
+			}
+		}
+		return false;
+	}
+
+	
+}
